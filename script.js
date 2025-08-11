@@ -349,6 +349,11 @@ function displayGeneratedOneLink(url) {
     if (existingDisplay) {
         existingDisplay.remove();
     }
+
+    const existingOverlay = document.getElementById('onelink-overlay');
+    if (existingOverlay) {
+        existingOverlay.remove();
+    }
     
     // Create display container
     const displayContainer = document.createElement('div');
@@ -406,6 +411,7 @@ function displayGeneratedOneLink(url) {
     
     // Add overlay background
     const overlay = document.createElement('div');
+    overlay.id = 'onelink-overlay'; 
     overlay.style.cssText = `
         position: fixed;
         top: 0;
@@ -448,7 +454,7 @@ function copyToClipboard(text) {
 // Function to close OneLink display
 function closeOneLinkDisplay() {
     const display = document.getElementById('onelink-display');
-    const overlay = document.querySelector('div[style*="rgba(0,0,0,0.5)"]');
+    const overlay = document.getElementById('onelink-overlay');
     if (display) display.remove();
     if (overlay) overlay.remove();
 }
