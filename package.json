@@ -1,0 +1,21 @@
+{
+  "name": "appsflyer-smart-banner-test",
+  "version": "1.0.0",
+  "description": "A simple website to test AppsFlyer Smart Banner functionality",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx http-server . -p 8000 -c-1 --cors"
+  },
+  "keywords": [
+    "appsflyer",
+    "smart-banner",
+    "mobile",
+    "testing"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+} 

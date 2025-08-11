@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppsFlyer Smart Banner Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
+    
+    <!-- AppsFlyer SDKs will be loaded dynamically after user enters their key -->
+</head>
+<body>
+    <header>
+        <h1>AppsFlyer Web-to-App Test</h1>
+        <p>A simple website to test AppsFlyer Smart Banner functionality</p>
+    </header>
+
+    <main>
+        <!-- Web Dev Key Input Form -->
+        <section class="key-input-section" id="key-input-section">
+            <div class="key-form">
+                <h3>🔐 Enter Your AppsFlyer Web Dev Key</h3>
+                <p>To test AppsFlyer functionality, please enter your Web Dev Key from the AppsFlyer dashboard.</p>
+                
+                <div class="form-group">
+                    <label for="web-key-input">Web Dev Key:</label>
+                    <input type="text" id="web-key-input" placeholder="Enter your AppsFlyer Web Dev Key" />
+                    <small>Get this from: AppsFlyer Dashboard > Website workplace > Copy your Web Key</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="onelink-url-input">OneLink URL (Optional):</label>
+                    <input type="text" id="onelink-url-input" placeholder="https://your-app.onelink.me/your-link-id" />
+                    <small>Get this from: AppsFlyer Dashboard > OneLink > Copy your OneLink URL</small>
+                </div>
+                
+                <button onclick="initializeAppsFlyer()" class="primary-btn">🚀 Initialize AppsFlyer</button>
+                
+                <div class="help-text">
+                    <p><strong>Need help?</strong></p>
+                    <ul>
+                        <li>Go to your AppsFlyer dashboard</li>
+                        <li>Navigate to Website workplace</li>
+                        <li>Copy your Web Key</li>
+                        <li>Paste it in the field above</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- AppsFlyer Test Section (Hidden until key is entered) -->
+        <section class="content" id="appsflyer-section" style="display: none;">
+            <h3>About Smart Banners</h3>
+            <p>Smart Banners are mobile web-to-app banners that automatically detect if a user has your app installed and show the appropriate call-to-action:</p>
+            <ul>
+                <li>If the app is installed: "Open App" button</li>
+                <li>If the app is not installed: "Download App" button</li>
+            </ul>
+            
+            <h3>About Smart Script</h3>
+            <p>Smart Script automatically generates dynamic OneLink URLs based on incoming URL parameters and maps them to outgoing OneLink parameters:</p>
+            <ul>
+                <li>Maps UTM parameters (utm_source, utm_campaign) to OneLink parameters</li>
+                <li>Handles Facebook click IDs (fbclid) and Google click IDs (gclid)</li>
+                <li>Preserves incoming URL parameters across website pages</li>
+                <li>Supports custom parameter mapping and override values</li>
+            </ul>
+            
+            <h3>Test Controls</h3>
+            <div class="controls">
+                <button onclick="showBanner()">Show Banner</button>
+                <button onclick="hideBanner()">Hide Banner</button>
+                <button onclick="updateBannerParams()">Update Parameters</button>
+                <button onclick="checkSDKStatus()" style="background: #9b59b6;">Debug SDK</button>
+                <button onclick="testSmartScript()" style="background: #e67e22;">Test Smart Script</button>
+                <button onclick="showInitialOneLink()" style="background: #16a085;">Show Initial OneLink</button>
+                <button onclick="resetAppsFlyerConfig()" style="background: #95a5a6;">Reset Configuration</button>
+            </div>
+
+            <h3>Features to Test</h3>
+            <div class="features">
+                <div class="feature">
+                    <h4>📱 Mobile Detection</h4>
+                    <p>Banner only shows on mobile devices</p>
+                </div>
+                <div class="feature">
+                    <h4>🔗 Deep Linking</h4>
+                    <p>Direct users to specific app content</p>
+                </div>
+                <div class="feature">
+                    <h4>📊 Analytics</h4>
+                    <p>Track banner impressions and clicks</p>
+                </div>
+                <div class="feature">
+                    <h4>🔗 Smart Script</h4>
+                    <p>Generate dynamic OneLink URLs with parameters</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info">
+            <h3>Setup Instructions</h3>
+            <ol>
+                <li>✅ Replace <code>YOUR_WEB_KEY</code> in the script with your actual AppsFlyer Web Key</li>
+                <li>Create a Smart Banner in your AppsFlyer dashboard</li>
+                <li>Test on a mobile device or use browser dev tools to simulate mobile</li>
+                <li>The banner should appear at the bottom of the page</li>
+            </ol>
+            
+            <h3>Debugging Steps</h3>
+            <ol>
+                <li><strong>Check Console:</strong> Open browser dev tools (F12) and check the Console tab</li>
+                <li><strong>Click "Debug SDK":</strong> Use the purple button to check if AppsFlyer SDK is loaded</li>
+                <li><strong>Check Network:</strong> In dev tools Network tab, look for requests to <code>websdk.appsflyer.com</code></li>
+                <li><strong>Mobile Simulation:</strong> Use browser dev tools to simulate mobile device</li>
+                <li><strong>Clear Cache:</strong> Try incognito/private browsing mode</li>
+            </ol>
+            
+            <h3>Common Issues</h3>
+            <ul>
+                <li><strong>AF is not defined:</strong> SDK not loaded - check network connection</li>
+                <li><strong>No banner appears:</strong> Check if Smart Banner is created in AppsFlyer dashboard</li>
+                <li><strong>Desktop warning:</strong> Smart Banners only work on mobile devices</li>
+                <li><strong>Smart Script returns null:</strong> Check skip lists or URL parameters</li>
+                <li><strong>OneLink not generated:</strong> Verify OneLink URL and parameters are correct</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AppsFlyer Smart Banner Test</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
